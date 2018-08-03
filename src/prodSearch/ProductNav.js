@@ -38,6 +38,7 @@ const SearchInp = () => {
   return (
     <div>
       <Search
+        prefix={<Icon type="search" style={{ color: "rgba(0,0,0,.25)" }} />}
         placeholder="Search"
         onSearch={value => console.log(value)}
         style={{ width: 323, height: 32, marginRight: "18px" }}

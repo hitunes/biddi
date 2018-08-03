@@ -10,6 +10,10 @@
     font-size: 13px
 }
 
+.ant-input-search-icon {
+    display: none !important
+}
+
 .product-menu {
     height: 67px;
     border-top: 1px solid #E0E0E0;
