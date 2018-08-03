@@ -20,7 +20,7 @@ export const Navbar = () => {
 export const NavList = () => {
   return (
     <div className="navlist-wrapper">
-      <ul>
+      <ul className="navlist-list">
         <li>Dashboard</li>
         <li>Inventory</li>
         <li>Purchase orders</li>

@@ -1,3 +1,59 @@
 .button-wrapper {
-    padding-left: 228px
+    padding-left: 228px;
+    display: flex;
+    margin-bottom: 100px
+}
+
+.sort-card {
+    width: 154px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    margin-left: 37px;
+    margin-right: 70px;
+    border-radius: 3px;
+}
+
+.sort-card-top {
+    border-bottom: 1px solid #E0E0E0;
+    padding-left: 15px;
+    margin-bottom: 9px !important
+}
+
+.sort-card-mid {
+    border-bottom: 1px solid #E0E0E0;
+    padding-left: 10px;
+    margin-bottom: 9px !important
+}
+
+.sort-card ul,
+.filter-card ul {
+    flex-direction: column;
+}
+
+.sort-card ul>li,
+.filter-card ul>li {
+    font-size: 12px;
+    color: #828282;
+    text-transform: inherit;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.sort-card ul>li:hover,
+.filter-card ul>li:hover {
+    opacity: 0.5;
+}
+
+
+/* filter card */
+
+.filter-card {
+    width: 171px;
+    height: 161px;
+    border-radius: 3px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    margin-right: 58px;
+}
+
+.filter-card-top {
+    padding-left: 15px;
 }

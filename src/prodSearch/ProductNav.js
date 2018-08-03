@@ -10,13 +10,14 @@ export default class ProductNav extends Component {
     console.log(`selected ${value}`);
   };
   render() {
+    let { handleSearch, searchTerm } = this.props;
     return (
       <div className="product-menu">
         <div>
           <SelectList handleChange={this.handleChange} />
         </div>
         <div>
-          <SearchInp />
+          <SearchInp searchTerm={searchTerm} handleSearch={handleSearch} />
           <Button type="primary">New Product</Button>
           <Button className="menufold-btn">
             <Icon type="menu-fold" />
@@ -34,12 +35,14 @@ export default class ProductNav extends Component {
     );
   }
 }
-const SearchInp = () => {
+const SearchInp = ({ searchTerm, handleSearch }) => {
   return (
     <div>
       <Search
+        value={searchTerm}
         prefix={<Icon type="search" style={{ color: "rgba(0,0,0,.25)" }} />}
         placeholder="Search"
+        onChange={handleSearch}
         onSearch={value => console.log(value)}
         style={{ width: 323, height: 32, marginRight: "18px" }}
       />

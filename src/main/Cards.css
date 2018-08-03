@@ -1,9 +1,15 @@
+.main-card {
+    margin-bottom: 293px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .card-wrapper {
     margin-left: 15px;
+    margin-right: 35px;
     width: 287px;
     height: 198px;
     border: 1px solid #D9D9D9;
-    margin-bottom: 293px;
 }
 
 .upper-content {
