@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Select, Input, Button, Icon } from "antd";
 import "./ProductNav.css";
 
@@ -24,10 +25,14 @@ export default class ProductNav extends Component {
           </Button>
           <ButtonGroup>
             <Button>
-              <Icon type="bars" />
+              <Link to="/">
+                <Icon type="bars" />
+              </Link>
             </Button>
             <Button>
-              <Icon type="appstore" />
+              <Link to="/grid">
+                <Icon type="appstore" />
+              </Link>
             </Button>
           </ButtonGroup>
         </div>

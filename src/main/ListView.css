@@ -1,0 +1,10 @@
+.table-wrapper {
+    width: 100%
+}
+
+.thead-wrapper {
+    background-color: #F7F7F7;
+    color: #333333;
+    font-size: 12px;
+    text-transform: uppercase
+}
