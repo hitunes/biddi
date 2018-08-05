@@ -1,5 +1,5 @@
 .main-card {
-    margin-bottom: 293px;
+    margin-bottom: 93px;
     margin-top: 31px;
     display: flex;
     flex-wrap: wrap;
@@ -7,6 +7,7 @@
 
 .card-wrapper {
     margin-left: 15px;
+    margin-bottom: 15px;
     margin-right: 35px;
     width: 287px;
     height: 198px;

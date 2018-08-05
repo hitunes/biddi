@@ -89,12 +89,12 @@ export default class App extends Component {
   };
   handleDelete = selectedRowKeys => {
     const dataSource = [...this.state.articles];
+    console.log(this.state.selectedRowKeys);
     dataSource.splice(
       this.state.selectedRowKeys,
       this.state.selectedRowKeys.length
     );
     this.setState({ articles: dataSource });
-    console.log("delete", this.state.selectedRowKeys);
   };
 
   onSortDate = e => {
@@ -102,41 +102,7 @@ export default class App extends Component {
     data.sort((a, b) => [data[0].id] - [data[0].id]);
     this.setState({ data });
   };
-  // onSortName = column => e => {
-  //   const direction = this.state.sort.column
-  //     ? this.state.sort.direction === "asc"
-  //       ? "desc"
-  //       : "asc"
-  //     : "desc";
-  //   const sortedData = this.state.columns.sort((a, b) => {
-  //     if (column === "Name") {
-  //       const nameA = a.Name.toUpperCase(); // ignore upper and lowercase
-  //       const nameB = b.Name.toUpperCase(); // ignore upper and lowercase
-  //       if (nameA < nameB) {
-  //         return -1;
-  //       }
-  //       if (nameA > nameB) {
-  //         return 1;
-  //       }
-  //       // names must be equal
-  //       return 0;
-  //     }
-  //   });
-  //   console.log(sortedData);
-  //   if (direction === "desc") {
-  //     sortedData.reverse();
-  //   }
-  //   this.setState({
-  //     articles: sortedData,
-  //     sort: {
-  //       column,
-  //       direction
-  //     }
-  //   });
-  // };
-
   render() {
-    console.log(this.state.articles);
     let { articles, searchTerm, columns, selectedRowKeys } = this.state;
     return (
       <BrowserRouter>
