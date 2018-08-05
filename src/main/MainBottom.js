@@ -33,10 +33,10 @@ const SortCard = ({ onSortDate, onSortName }) => {
         SORT BY
       </span>
       <ul className="sort-card-top">
-        <li onClick={e => onSortName(e)}>Name</li>
+        <li onClick={onSortName}>Name</li>
         <li>Category</li>
         <li>Manufacturer</li>
-        <li onClick={e => onSortDate(e)}>Created Time</li>
+        <li onClick={onSortDate}>Created Time</li>
       </ul>
       <ul className="sort-card-mid">
         <li>
