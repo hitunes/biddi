@@ -101,7 +101,7 @@ export default class App extends Component {
       this.state.selectedRowKeys,
       this.state.selectedRowKeys.length
     );
-    this.setState({ articles: dataSource });
+    this.setState({ articles: dataSource, selectedRowKeys: [] });
   };
 
   onSortDate = e => {

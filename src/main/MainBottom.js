@@ -34,7 +34,7 @@ export default class MainBottom extends Component {
           />
           <Button
             style={{ marginLeft: "69px", display: `${activeDisplay}` }}
-            onClick={selectedRowKeys => handleDelete(selectedRowKeys)}
+            onClick={handleDelete}
           >
             <Icon type="delete" style={{ fontSize: 26, color: "#828282" }} />
           </Button>
