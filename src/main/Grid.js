@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Cards from "./Cards";
-import MainBottom from "./MainBottom";
 import "./Grid.css";
 export default class Grid extends Component {
   onChange = e => {
@@ -15,7 +14,6 @@ export default class Grid extends Component {
           Products={articles}
           onChange={this.onChange}
         />
-        <MainBottom />
       </div>
     );
   }

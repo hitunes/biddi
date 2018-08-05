@@ -55,7 +55,7 @@ const SearchInp = ({ searchTerm, handleSearch }) => {
   );
 };
 
-const SelectList = handleChange => {
+const SelectList = ({ handleChange }) => {
   return (
     <Select
       showSearch

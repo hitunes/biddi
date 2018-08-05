@@ -1,10 +1,30 @@
-.table-wrapper {
+table {
     width: 100%
 }
 
-.thead-wrapper {
+thead {
     background-color: #F7F7F7;
     color: #333333;
     font-size: 12px;
     text-transform: uppercase
+}
+
+thead tr {
+    height: 30px !important;
+}
+
+tbody tr {
+    height: 72px;
+    border-bottom: 1px solid #E0E0E0;
+    font-size: 13px;
+    color: #4F4F4F;
+}
+
+.ant-table-thead>tr>th {
+    padding: 0 16px !important;
+    word-break: inherit !important
+}
+
+.ant-table-selection .anticon-down {
+    display: none !important
 }

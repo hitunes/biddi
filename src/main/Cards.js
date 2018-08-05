@@ -16,7 +16,7 @@ export default class Cards extends Component {
         ).map((product, index) => (
           <div key={product.id} className="card-wrapper">
             <div className="upper-content">
-              <Checkbox onChange={onChange} />
+              <Checkbox className="card-checkbox" onChange={onChange} />
               <div>
                 <img
                   className="image-box"

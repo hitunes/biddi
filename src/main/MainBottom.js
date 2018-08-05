@@ -7,44 +7,36 @@ export default class MainBottom extends Component {
     console.log("click", e);
   };
   render() {
+    let { handleDelete, onSortName, onSortDate, selectedRowKeys } = this.props;
     return (
       <div>
         <div className="button-wrapper">
           <Button onClick={this.selectAll}>Select All</Button>
-          <SortCard />
+          <SortCard onSortName={onSortName} onSortDate={onSortDate} />
           <FilterCard />
           <ActiveDropDown handleMenuClick={this.handleMenuClick} />
-          <Button style={{ marginLeft: "69px" }}>
-            <Icon
-              type="delete"
-              style={{
-                fontSize: 26,
-                color: "#828282"
-              }}
-            />
+          <Button
+            style={{ marginLeft: "69px" }}
+            onClick={selectedRowKeys => handleDelete(selectedRowKeys)}
+          >
+            <Icon type="delete" style={{ fontSize: 26, color: "#828282" }} />
           </Button>
         </div>
       </div>
     );
   }
 }
-const SortCard = () => {
+const SortCard = ({ onSortDate, onSortName }) => {
   return (
     <div className="sort-card">
-      <span
-        style={{
-          fontSize: "11px",
-          color: "#BDBDBD",
-          paddingLeft: "15px"
-        }}
-      >
+      <span style={{ fontSize: "11px", color: "#BDBDBD", paddingLeft: "15px" }}>
         SORT BY
       </span>
       <ul className="sort-card-top">
-        <li>Name</li>
+        <li onClick={e => onSortName(e)}>Name</li>
         <li>Category</li>
         <li>Manufacturer</li>
-        <li>Created Time</li>
+        <li onClick={e => onSortDate(e)}>Created Time</li>
       </ul>
       <ul className="sort-card-mid">
         <li>

@@ -68,7 +68,7 @@
 
 /* checkbox */
 
-.ant-checkbox {
-    right: 125px;
+.card-checkbox>span {
+    right: 125px !important;
     top: 5px !important;
 }
