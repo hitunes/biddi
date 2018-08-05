@@ -10,7 +10,8 @@ import "antd/dist/antd.css";
 import "./App.css";
 export default class App extends Component {
   state = {
-    active: "primary",
+    sortDropDisplay: "none",
+    activeDropDisplay: "none",
     articles: [],
     searchTerm: "",
     sortedInfo: null,
@@ -65,6 +66,12 @@ export default class App extends Component {
   handleSearch = e => {
     this.setState({ searchTerm: e.target.value });
   };
+  handleSelectChange = value => {
+    this.setState({
+      activeDropDisplay: "block"
+    });
+    console.log(`selected ${value}`);
+  };
   getArticles = () => {
     const BASE_URL =
       "https://bidiibuild-test-api.herokuapp.com/api/v1/products";
@@ -102,8 +109,20 @@ export default class App extends Component {
     data.sort((a, b) => [data[0].id] - [data[0].id]);
     this.setState({ data });
   };
+  sortByDrop = () => {
+    this.setState({
+      sortDropDisplay: "block"
+    });
+  };
   render() {
-    let { articles, searchTerm, columns, selectedRowKeys } = this.state;
+    let {
+      articles,
+      searchTerm,
+      columns,
+      selectedRowKeys,
+      sortDropDisplay,
+      activeDropDisplay
+    } = this.state;
     return (
       <BrowserRouter>
         <div className="App">
@@ -112,6 +131,8 @@ export default class App extends Component {
           <ProductNav
             searchTerm={searchTerm}
             handleSearch={this.handleSearch}
+            sortByDrop={this.sortByDrop}
+            handleChange={this.handleSelectChange}
           />
           <Route
             exact
@@ -138,8 +159,11 @@ export default class App extends Component {
             )}
           />
           <MainBottom
+            onSelectChange={this.SelectChange}
+            selectAll={this.selectAll}
             handleDelete={this.handleDelete}
-            selectedRowKeys={selectedRowKeys}
+            sortDisplay={sortDropDisplay}
+            activeDisplay={activeDropDisplay}
             onSortName={this.onSortName}
             onSortDate={this.onSortDate}
           />

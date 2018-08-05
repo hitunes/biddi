@@ -7,20 +7,17 @@ const Option = Select.Option;
 const Search = Input.Search;
 const ButtonGroup = Button.Group;
 export default class ProductNav extends Component {
-  handleChange = value => {
-    console.log(`selected ${value}`);
-  };
   render() {
-    let { handleSearch, searchTerm } = this.props;
+    let { handleSearch, searchTerm, sortByDrop, handleChange } = this.props;
     return (
       <div className="product-menu">
         <div>
-          <SelectList handleChange={this.handleChange} />
+          <SelectList handleChange={handleChange} />
         </div>
         <div>
           <SearchInp searchTerm={searchTerm} handleSearch={handleSearch} />
           <Button type="primary">New Product</Button>
-          <Button className="menufold-btn">
+          <Button className="menufold-btn" onClick={sortByDrop}>
             <Icon type="menu-fold" />
           </Button>
           <ButtonGroup>
