@@ -29,7 +29,7 @@ export default class ListView extends Component {
         key: "name",
         title: "Name",
         dataIndex: "attributes",
-        width: "30%",
+        width: "25%",
         render: text => (
           <span>
             <img
@@ -45,10 +45,10 @@ export default class ListView extends Component {
         sorter: text => (a, b) => a.text.name.length - b.text.name.length,
         sortOrder: sortedInfo.columnKey === "name" && sortedInfo.order
       },
-      { key: 1, title: "Code", dataIndex: "attributes.code" },
+      { key: 1, title: "Code", dataIndex: "attributes.code",width: "6%" },
       { key: 2, title: "Unit Price", dataIndex: "attributes.unit_price" },
       { key: 3, title: "Manufacturer", dataIndex: "attributes.manufacturer" },
-      { key: 4, title: "Uom", dataIndex: "attributes.uom" },
+      { key: 4, title: "Uom", dataIndex: "attributes.uom", width: "6%" },
       { key: 5, title: "Category", dataIndex: "attributes.category" },
       {
         key: 6,

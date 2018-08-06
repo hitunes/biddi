@@ -69,7 +69,8 @@ export default class App extends Component {
       return { index: i, value: el.toLowerCase() };
     });
     mapped.sort((a, b) => {
-    a.value < b.value ? -1 : a.value > b.value ? 1 : 0
+     a.value < b.value ? -1 : a.value > b.value ? 1 : 0
+    });
     var result = mapped.map(el => {
       return data1[el.index];
     });
