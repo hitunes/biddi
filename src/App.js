@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { Button } from "antd";
 import { Navbar, NavList } from "./navbar/Navbar";
 import ProductNav from "./prodSearch/ProductNav";
 import Grid from "./main/Grid";
 import MainBottom from "./main/MainBottom";
 import ListView from "./main/ListView";
-import "antd/dist/antd.css";
+import 'antd/dist/antd.css';
 import "./App.css";
 export default class App extends Component {
   state = {
@@ -14,54 +13,7 @@ export default class App extends Component {
     activeDropDisplay: "none",
     articles: [],
     searchTerm: "",
-    sortedInfo: null,
-    columns: [
-      {
-        key: 0,
-        title: "Name",
-        dataIndex: "attributes",
-        width: "30%",
-        render: text => (
-          <span>
-            <img
-              src={text.image}
-              alt="products"
-              width="40"
-              height="40"
-              style={{ marginRight: "18px" }}
-            />
-            <span>{text.name}</span>
-          </span>
-        ),
-        sorter: text => (a, b) => {
-          return text.name.length - text.name.length;
-        }
-      },
-      { key: 1, title: "Code", dataIndex: "attributes.code" },
-      { key: 2, title: "Unit Price", dataIndex: "attributes.unit_price" },
-      { key: 3, title: "Manufacturer", dataIndex: "attributes.manufacturer" },
-      { key: 4, title: "Uom", dataIndex: "attributes.uom" },
-      { key: 5, title: "Category", dataIndex: "attributes.category" },
-      {
-        key: 6,
-        title: "reorder level ",
-        dataIndex: "attributes.reorder_level"
-      },
-      {
-        key: 7,
-        title: "status ",
-        dataIndex: "attributes",
-        render: text => (
-          <span>
-            <Button type={text.is_active !== false ? "primary" : "danger"}>
-              {text.is_active !== false ? "active" : "not-active"}
-            </Button>
-          </span>
-        )
-      }
-    ],
     selectedRowKeys: [],
-    sort: { column: null, direction: "desc" }
   };
   handleSearch = e => {
     this.setState({ searchTerm: e.target.value });
@@ -104,11 +56,34 @@ export default class App extends Component {
     this.setState({ articles: dataSource, selectedRowKeys: [] });
   };
 
-  onSortDate = e => {
+  onSortDate = () => {
     const data = this.state.articles;
-    data.sort((a, b) => [data[0].id] - [data[0].id]);
-    this.setState({ data });
+    let data1 = data.map(value => value.attributes.created_at);
+   console.log( data1.sort((a, b) => a - b))
+    this.setState({ articles: data });
   };
+  onSortName = () => {
+    const data = this.state.articles;
+    let data1 = data.map(value => value.attributes.name);
+    let mapped = data1.map((el, i) => {
+      return { index: i, value: el.toLowerCase() };
+    });
+    mapped.sort((a, b) => {
+      if (a.value > b.value) {
+        return 1;
+      }
+      if (a.value < b.value) {
+        return -1;
+      }
+      return 0;
+    });
+    var result = mapped.map(el => {
+      return data1[el.index];
+    });
+    console.log(mapped)
+    this.setState({ articles: data });
+  };
+
   sortByDrop = () => {
     this.setState({
       sortDropDisplay: "block"
@@ -118,57 +93,20 @@ export default class App extends Component {
     let {
       articles,
       searchTerm,
-      columns,
       selectedRowKeys,
       sortDropDisplay,
-      activeDropDisplay
+      activeDropDisplay,
+      sortedInfo
     } = this.state;
-    return (
-      <BrowserRouter>
+    return <BrowserRouter>
         <div className="App">
           <Navbar />
           <NavList />
-          <ProductNav
-            searchTerm={searchTerm}
-            handleSearch={this.handleSearch}
-            sortByDrop={this.sortByDrop}
-            handleChange={this.handleSelectChange}
-          />
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <ListView
-                Products={this.state.articles}
-                searchTerm={this.state.searchTerm}
-                columns={columns}
-                selectedRowKeys={selectedRowKeys}
-                onSelectChange={this.SelectChange}
-                selectAll={this.selectAll}
-              />
-            )}
-          />
-          <Route
-            path="/grid"
-            render={() => (
-              <Grid
-                articles={articles}
-                searchTerm={searchTerm}
-                sortName={this.setNameSort}
-              />
-            )}
-          />
-          <MainBottom
-            onSelectChange={this.SelectChange}
-            selectAll={this.selectAll}
-            handleDelete={this.handleDelete}
-            sortDisplay={sortDropDisplay}
-            activeDisplay={activeDropDisplay}
-            onSortName={this.onSortName}
-            onSortDate={this.onSortDate}
-          />
+          <ProductNav searchTerm={searchTerm} handleSearch={this.handleSearch} sortByDrop={this.sortByDrop} handleChange={this.handleSelectChange} />
+          <Route exact path="/" render={() => <ListView Products={articles} searchTerm={searchTerm} selectedRowKeys={selectedRowKeys} onSelectChange={this.SelectChange} selectAll={this.selectAll} sortedInfo={sortedInfo} tableOnChange={this.tableOnChange} />} />
+          <Route path="/grid" render={() => <Grid articles={articles} searchTerm={searchTerm} sortName={this.setNameSort} />} />
+          <MainBottom  selectAll={this.selectAll} handleDelete={this.handleDelete} sortDisplay={sortDropDisplay} activeDisplay={activeDropDisplay} onSortName={this.onSortName} onSortDate={this.onSortDate} />
         </div>
-      </BrowserRouter>
-    );
+      </BrowserRouter>;
   }
 }

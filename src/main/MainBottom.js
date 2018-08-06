@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, Dropdown, Button, Icon, message, Table } from "antd";
+import { Menu, Dropdown, Button, Icon, message} from "antd";
 
 export default class MainBottom extends Component {
   handleMenuClick = e => {
@@ -14,7 +14,6 @@ export default class MainBottom extends Component {
       sortDisplay,
       activeDisplay,
       selectAll,
-      onSelectChange
     } = this.props;
     return (
       <div>
