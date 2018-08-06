@@ -68,7 +68,8 @@ export default class ListView extends Component {
         dataIndex: "attributes",
         render: text => (
           <span>
-            <Button type={text.is_active !== false ? "primary" : "danger"}>
+            <Button type={text.is_active !== false ? "primary" : "danger"} style={{borderRadius: "10px",
+    height: "25px"}}>
               {text.is_active !== false ? "active" : "not-active"}
             </Button>
           </span>
